@@ -3,12 +3,12 @@
 
 using namespace std;
 
-treenode *makeatreenode(int x)
+treenode *makeatreenode(int val)
 {
     treenode *box;
     box = new treenode;
 
-    box->dat = x;
+    box->dat = val;
     box->lchild = NULL;
     box->rchild = NULL;
     return box;

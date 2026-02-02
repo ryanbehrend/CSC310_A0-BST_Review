@@ -3,17 +3,6 @@
 
 using namespace std;
 
-// Binary Search Tree Methods
-// BST();
-// void in();
-// void pre();
-// void post();
-// void insert(int val);
-// void remove(int val);
-// bool search(int val);
-// int height();
-// bool isBalanced();
-
 int main(int argc, char *argv[])
 {
     BST t1, t2;
