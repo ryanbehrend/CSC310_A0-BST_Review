@@ -111,6 +111,16 @@ bool BST::isBalanced()
     return isBalancedHelper(root);
 }
 
+int BST::numNodes()
+{
+	return numNodesHelper(root);
+}
+
+bool BST::isWorstCaseSenario()
+{
+    return isWorstCaseSenarioHelper(root);
+}
+
 // private functions
 void BST::inHelper(treenode *root)
 {
@@ -330,4 +340,26 @@ bool BST::isBalancedHelper(treenode *root)
     {
         return false;
     }
+}
+
+int BST::numNodesHelper(treenode *root)
+{
+	if (root == NULL)
+	{
+		return 0;
+	}
+
+	int lcount, rcount;
+	lcount = numNodesHelper(root->lchild);
+	rcount = numNodesHelper(root->rchild);
+
+	return 1 + lcount + rcount;
+}
+
+bool BST::isWorstCaseSenarioHelper(treenode *root)
+{
+    int numberOfNodes = numNodesHelper(root);
+    int treeHeight = treeHeightHelper(root);
+
+    return numberOfNodes - 1 == treeHeight;
 }

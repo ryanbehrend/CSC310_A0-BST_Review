@@ -1,5 +1,12 @@
 # CSC310_A0-BST_Review
 
+## How to run the program
+* cd into the Version5 folder
+* run "make" in the terminal
+* run "./bst" in the terminal
+
+*Note: The main for this program creates two BST's and makes one of them the best case senario and the other the worst case senario. Then many of the functions are run on each of the BST's*
+
 ### List of all BST methods
 * BST();
 * void in();
@@ -11,6 +18,8 @@
 * int treeHeight();
 * int nodeHeight(int val);
 * bool isBalanced();
+* int numNodes();
+* bool isWorstCaseSenario();
 
 ### Create a BST by doing the following
 * BST t;
@@ -47,3 +56,9 @@
 * t.isBalanced();
 
 *Note: this will return true if the left and right subtrees have a height within 1 of each other*
+
+### Find the number of nodes in the tree by doing the following:
+* t.numNodes();
+
+### Find if the tree is in the worst case senario by doing the following:
+* t.isWorstCaseSenario();

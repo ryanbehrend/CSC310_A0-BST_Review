@@ -20,6 +20,8 @@ public:
     int treeHeight();
     int nodeHeight(int val);
     bool isBalanced();
+    int numNodes();
+    bool isWorstCaseSenario();
 
 private:
     void inHelper(treenode *root);
@@ -31,5 +33,7 @@ private:
     int treeHeightHelper(treenode *root);
     int nodeHeightHelper(treenode *root, int val);
     bool isBalancedHelper(treenode *root);
+    int numNodesHelper(treenode *root);
+    bool isWorstCaseSenarioHelper(treenode *root);
     treenode *root;
 };
