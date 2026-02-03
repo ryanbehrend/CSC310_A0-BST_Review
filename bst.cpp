@@ -1,5 +1,6 @@
 #include <iostream>
 #include "bst.h"
+#include "customErrorClass.h"
 
 using namespace std;
 
@@ -22,6 +23,10 @@ BST::BST()
 // public functions
 void BST::in()
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     cout << "Inorder: ";
     inHelper(root);
     cout << endl;
@@ -29,6 +34,10 @@ void BST::in()
 
 void BST::pre()
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     cout << "Preorder: ";
     preHelper(root);
     cout << endl;
@@ -36,6 +45,10 @@ void BST::pre()
 
 void BST::post()
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     cout << "Postorder: ";
     postHelper(root);
     cout << endl;
@@ -55,26 +68,46 @@ void BST::insert(int val)
 
 void BST::remove(int val)
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     root = removeHelper(root, val);
 }
 
 bool BST::search(int val)
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     return searchHelper(root, val);
 }
 
 int BST::treeHeight()
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     return treeHeightHelper(root);
 }
 
 int BST::nodeHeight(int val)
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     return nodeHeightHelper(root, val);
 }
 
 bool BST::isBalanced()
 {
+    if (root == NULL)
+    {
+        throw MyException("Tree is empty");
+    }
     return isBalancedHelper(root);
 }
 
@@ -247,11 +280,6 @@ int BST::treeHeightHelper(treenode *root)
 
 int BST::nodeHeightHelper(treenode *root, int val)
 {
-    if (root == NULL)
-    {
-        return -1; // return -1 for an empty tree
-    }
-
     if (root->dat == val)
     {
         return 0;
@@ -262,7 +290,7 @@ int BST::nodeHeightHelper(treenode *root, int val)
         int h = nodeHeightHelper(root->lchild, val);
         if (h == -1)
         {
-            return -2; // return -2 for a tree without the chosen node
+            return -1; // return -1 for a tree without the chosen node
         }
         else
         {
@@ -274,7 +302,7 @@ int BST::nodeHeightHelper(treenode *root, int val)
         int h = nodeHeightHelper(root->rchild, val);
         if (h == -1)
         {
-            return -2; // return -2 for a tree without the chosen node
+            return -1; // return -1 for a tree without the chosen node
         }
         else
         {

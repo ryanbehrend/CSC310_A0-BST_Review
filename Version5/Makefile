@@ -2,15 +2,15 @@ INCLUDE_DIRS := Includes
 CC 			 := g++
 CFLAGS 		 := -I$(INCLUDE_DIRS)
 
-OBJS 		 := customErrorClass.o customErrorHandling.o
-DEPS 		 := ${INCLUDE_DIRS}/customErrorClass.h
+OBJS 		 := customErrorClass.o customErrorHandling.o bst.o
+DEPS 		 := ${INCLUDE_DIRS}/customErrorClass.h ../bst.h
 
 .PHONY: clean all
 
-all: customErrorClass.o customErrorHandling.o errorTutorial
+all: bst
 
 clean:
-	rm $(OBJS) errorTutorial
+	rm $(OBJS) bst
 
 customErrorClass.o: customErrorClass.cpp ${DEPS}
 	$(CC) -c -o $@ $(CFLAGS) $<
@@ -18,5 +18,8 @@ customErrorClass.o: customErrorClass.cpp ${DEPS}
 customErrorHandling.o: customErrorHandling.cpp ${DEPS}
 	$(CC) -c -o $@ $(CFLAGS) $<
 
-errorTutorial: $(OBJS)
-	$(CC) -o $@ $^ $(CFLAGS)
+bst.o: ../bst.cpp ${DEPS}
+	$(CC) -c -o $@ $(CFLAGS) $<
+
+bst: $(OBJS) ../mainbst.cpp
+	$(CC) -o $@ $(CFLAGS) $^ 

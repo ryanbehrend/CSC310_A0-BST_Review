@@ -1,5 +1,6 @@
 #include <iostream>
 #include "bst.h"
+#include "customErrorClass.h"
 
 using namespace std;
 
@@ -15,47 +16,140 @@ int main(int argc, char *argv[])
     t1.insert(5);
     t1.insert(7);
 
-    t2.insert(1);
-    t2.insert(2);
-    t2.insert(3);
-    t2.insert(4);
-    t2.insert(5);
-    t2.insert(6);
-    t2.insert(7);
+    // t2.insert(1);
+    // t2.insert(2);
+    // t2.insert(3);
+    // t2.insert(4);
+    // t2.insert(5);
+    // t2.insert(6);
+    // t2.insert(7);
 
     cout << "In Order Traversal" << endl;
-    t1.in();
-    t2.in();
+    try 
+    {
+        t1.in();
+    }
+    catch (MyException &e)
+    {
+       cout << "Error: " << e.what() << endl;
+    }
+    try 
+    {
+        t2.in();
+    }
+    catch (MyException &e)
+    {
+       cout << "Error: " << e.what() << endl;
+    }
+
 
     cout << "\nPre Order Traversal" << endl;
-    t1.pre();
-    t2.pre();
+    try 
+    {
+        t1.pre();
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    try 
+    {
+        t2.pre();
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+
 
     cout << "\nPost Order Traversal" << endl;
-    t1.post();
-    t2.post();
-
-    if (t1.isBalanced())
+    try 
     {
-        cout << "\nt1 is balanced" << endl;
+        t1.post();
     }
-    else
+    catch (MyException &e)
     {
-        cout << "\nt1 is not balanced" << endl;
+        cout << "Error: " << e.what() << endl;
     }
-
-    if (t2.isBalanced())
+    try 
     {
-        cout << "t2 is balanced" << endl;
+        t2.post();
     }
-    else
+    catch (MyException &e)
     {
-        cout << "t2 is not balanced" << endl;
+        cout << "Error: " << e.what() << endl;
     }
 
-    cout << "\nt1 has a height of " << t1.treeHeight() << endl;
-    cout << "t2 has a height of " << t2.treeHeight() << endl;
 
-    cout << "\nIn t1, the node with a value of 4 has a height of " << t1.nodeHeight(4) << endl;
-    cout << "In t2, the node with a value of 4 has a height of " << t2.nodeHeight(4) << endl;
+    try
+    {
+        if (t1.isBalanced())
+        {
+            cout << "\nt1 is balanced" << endl;
+        }
+        else
+        {
+            cout << "\nt1 is not balanced" << endl;
+        }
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    try
+    {
+        if (t2.isBalanced())
+        {
+            cout << "\nt1 is balanced" << endl;
+        }
+        else
+        {
+            cout << "\nt1 is not balanced" << endl;
+        }
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+
+
+    try
+    {
+        int x = t1.treeHeight();
+        cout << "\nt1 has a height of " << x << endl;
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    try
+    {
+        int x = t2.treeHeight();
+        cout << "t2 has a height of " << x << endl;
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+
+
+    try
+    {
+        int x = t1.nodeHeight(4);
+        cout << "\nIn t1, the node with a value of 4 has a height of " << x << endl;
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    try
+    {
+        int x = t2.nodeHeight(4);
+        cout << "In t2, the node with a value of 4 has a height of " << x << endl;
+    }
+    catch (MyException &e)
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+    
 }
